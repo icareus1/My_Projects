@@ -2,9 +2,6 @@ document.addEventListener("DOMContentLoaded", function() {
     let randomWord = '',
     wordDefinition = '',
     infos = '',
-    phonetic = '',
-    sono = '',
-    exple= '',
     maxGuesses,
     corrects = [],
     incorrects = [];
@@ -13,9 +10,6 @@ document.addEventListener("DOMContentLoaded", function() {
     resetBtn = document.querySelector('.reset-btn'),
     definition = document.querySelector('.hint span'),
     moreInfo = document.querySelector('#infos'),
-    sound = document.querySelector('#sound'),
-    example = document.querySelector('.example'),
-    voiceSound = document.querySelector('#infos #sono'),
     wrongLetter = document.querySelector('.wrong-letter span'),
     guessLeft = document.querySelector('.guess-left span'),
     typingInput = document.querySelector('.typing-input');
@@ -44,10 +38,6 @@ document.addEventListener("DOMContentLoaded", function() {
             if (Array.isArray(dictionaryData) && dictionaryData.length > 0) {
                 wordDefinition = dictionaryData[0].meanings[0]?.definitions[0]?.definition;
                 infos = dictionaryData[0].meanings[0].partOfSpeech;
-                phonetic = dictionaryData[0].phonetic || "";
-                exple = dictionaryData[0].meanings[0].definitions[0].example || "";
-                sono = dictionaryData[0]?.phonetics[0]?.audio?.audio || "";
-;
 
                 //Convert the word and its definition into a string
                 randomWord = randomWord.toString();
@@ -60,24 +50,10 @@ document.addEventListener("DOMContentLoaded", function() {
                         html += `<input type="text" disabled>`;
                     }
                     inputs.innerHTML = html;
-                    moreInfo.innerHTML = `<p><span>${infos}</span>
-                                            <span>${phonetic}</span></p>`
-                    voiceSound.innerHTML = `<button onclick = 'playSound()'>
-                                                <i class = 'fas fa-volume-up'></i>
-                                            </button>`
-                    try{
-                        sound.setAttribute('src', `https:${sono}`);
-                        console.log(sound);
-                        throw new Error('Invalid');
-                    } catch (error) {
-                        // Handle the error
-                        console.error(error.message);
-                    }
-                    
+                    moreInfo.innerHTML = `<p><span>${infos}</span>`
                     definition.innerText = wordDefinition;
                     guessLeft.innerText = maxGuesses;
                     wrongLetter.innerText = incorrects;
-                    example.innerText = exple;
             }
         })
         .catch(error => {
