@@ -95,3 +95,37 @@ body {
     margin-top: 4%;
 }
 
+@media screen and (max-width: 768px) {
+    .wrapper h1 {
+        font-size: 2em; /* Adjust font size for smaller screens */
+    }
+
+    .inputs input {
+        width: 20%; /* Adjust input width for smaller screens */
+        font-size: 2.5rem; /* Adjust font size for smaller screens */
+    }
+    .details p {
+    font-size: 1.3em;
+    padding-left: 3%;
+    margin-bottom: 2%;
+}
+}
+
+@media screen and (max-width: 480px) {
+    .wrapper h1 {
+        font-size: 2rem; /* Further reduce font size for mobile screens */
+    }
+
+    .inputs input {
+        width: 30%; /* Further reduce input width for mobile screens */
+        font-size: 2.5em; /* Further reduce font size for mobile screens */
+    }
+    .content .reset-btn{
+        font-size: 1.8rem;
+    }
+    .details p {
+    font-size: 1.2em;
+    padding-left: 3%;
+    margin-bottom: 2%;
+}
+}
