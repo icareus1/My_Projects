@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+          <section>
+            {% if tasks %}
+                <h2>{{ title.name }}</h2>
+                <ul>
+                    {% for task in tasks %}
+                        <li>
+                            <span>
+                                <a href="{{ url_for('toggle_task', task_id=task.id)}}">Toggle: {{task.status}}</a>{{ task.name }}
+                            </span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+                <form action="{{url_for('add_task', title_id=title.id)}}" method="POST">
+                    <input type="text" name="task_name" placeholder="New task" required>
+                    <button type="submit">Add</button>
+                </form>
+        </section>
+    </main>
+    
+</body>
+</html>
